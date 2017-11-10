@@ -1,0 +1,49 @@
+body {
+    padding: 20px;
+    background: #fafafa;
+    position: relative;
+}
+.title-content{
+    width: 100%;
+    border-bottom: 2px solid #757575;
+    margin-bottom: 30px;
+}
+
+.title-content > .workshop-title{
+    font-size: 34px;
+    font-weight: 700;
+    color: rgba(117,117,117,1);
+    margin: 0px 0px 10px 0px;
+    
+}
+
+
+.mdl-card{
+    min-height: 112px !important;
+    max-width: 100% !important;
+}
+.mdl-card__title{
+    height: 112px !important;
+}
+
+.mdl-card__title-text{
+    font-size: 18px;
+    font-weight: 700;
+}
+
+@media(min-width:420px) and (max-width:768px){
+    .container-fluid{
+        width: 400px;
+        margin-left: calc(50% - 200px);
+    }
+}
+
+@media(max-width:420px){
+    .glossary-title{
+        font-size: 22px;
+    }
+    
+    .modal-title{
+        font-size: 14px;
+    }
+}
