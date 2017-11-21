@@ -62,7 +62,7 @@ and open the template in the editor.
                 <h1 class="text-capitalize workshop-title">oficina bootstrap</h1>
             </div>
 
-            <form action="" method="">
+            <form action="" method="" id="form" autocomplete="off" data-toggle="form" role="form">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title text-capitalize">Dados Pessoais</h3>
@@ -70,13 +70,15 @@ and open the template in the editor.
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group has-feedback">
                                     <label for="nome-form" class="control-label">Nome:</label>
 
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input type="text" id="nome-form" name="nome" class="form-control" placeholder="digite seu nome">
+                                        <input type="text" id="nome-form" name="nome" class="form-control" placeholder="digite seu nome" data-error="Digite o nome" autofocus required>
                                     </div>
+                                    <span class="glyphicon form-control-feedback"></span>
+                                    <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -94,9 +96,11 @@ and open the template in the editor.
                         </div>
                         <div class="row">
                             <div class="col-md-3">
-                                <div class="form-group">
+                                <div class="form-group has-feedback">
                                     <label for="cpf-form" class="control-label">CPF:</label>
-                                    <input type="text" name="cpf" id="cpf-form" class="form-control">
+                                    <input type="text" name="cpf" id="cpf-form" class="form-control" data-error="CPF em branco ou incorreto!" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" required>
+                                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                    <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -117,30 +121,36 @@ and open the template in the editor.
                         </div>
                         <div class="row">
                             <div class="col-md-3">
-                                <div class="form-group">
+                                <div class="form-group has-feedback">
                                     <label for="fixo-form" class="control-label">Telefone Fixo:</label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
-                                        <input type="tel" name="fixo" id="fixo-form" class="form-control">
+                                        <input type="tel" name="fixo" id="fixo-form" class="form-control" data-error="Telefone fixo em branco ou incorreto!" pattern="\(\d{2}\) \d{4}-\d{4}$" required>
                                     </div>
+                                    <span class="glyphicon form-control-feedback"></span>
+                                    <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="form-group">
+                                <div class="form-group has-feedback">
                                     <label for="celular-form" class="control-label">Telefone Celular:</label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                                        <input type="tel" name="celular" id="celular-form" class="form-control">
+                                        <input type="tel" name="celular" id="celular-form" class="form-control" data-error="Telefone celular em branco ou incorreto!" pattern="\(\d{2}\) \d{4,5}-\d{4}$" required>
                                     </div>
+                                    <span class="glyphicon form-control-feedback"></span>
+                                    <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group has-feedback">
                                     <label for="email-form" class="control-label">Email:</label>
                                     <div class="input-group">
                                         <span class="input-group-addon">@</span>
-                                        <input type="email" name="email" id="email-form" class="form-control">
+                                        <input type="email" name="email" id="email-form" class="form-control" data-error="Email em branco ou incorreto!" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
                                     </div>
+                                    <span class="glyphicon form-control-feedback"></span>
+                                    <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                         </div>
@@ -229,13 +239,31 @@ and open the template in the editor.
                         </div>
                     </div>
                 </div>
+                <div class="panel panel-default">
+                    <div class="panel-footer">
+                            <button type="submit" name="enviar" class="btn btn-primary">
+                                <i class="glyphicon glyphicon-save-file"></i> Enviar
+                            </button>
+                    </div>
+                </div>
             </form>
         </div>
+        
         <!-- IMPORTACAO DOS SCRIPTS -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="./js/jquery.min.js"></script>
         <script src="./bootstrap/js/bootstrap.min.js"></script>
-        <script src="./mdl/material.min.js"></script>
-        <script src="./js/glossario.js"></script>
-
+        <script src="./js/jquery.mask.min.js"></script>
+        <script src="./js/validator.min.js"></script>
+        <script src="./js/jquery.maskMoney.js"></script>
+        
+        
+        <script>
+            $(document).ready(function(){
+               $('#form').validator();
+               $('#cpf-form').mask('999.999.999-99', {placeholder: "___.___.___-__"});
+               $('#fixo-form').mask('(99) 9999-9999', {placeholder: "(__) ____-____"});
+               $('#celular-form').mask('(99) 99999-9999', {placeholder: "(__) _____-____"});
+            });
+        </script>
     </body>
 </html>
